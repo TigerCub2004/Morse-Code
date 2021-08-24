@@ -1,0 +1,51 @@
+ * Program that reads in the morse code alphabet from a text file in order to convert an english phrase to morse code.
+ * This code is available for public use. Please give credit where it is due.
+ *
+ * @Yahvin Gali
+ * @3/18/2021
+ */
+ 
+import java.util.*;
+import java.io.File;
+public class MorseCode
+{
+    public MorseCode()
+    {
+    }
+
+    public static String englishConvert(String english) throws Exception
+    {
+        String[] array = new String[english.length()];
+        String[] letter = { "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k",
+        "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z",
+        "1", "2", "3", "4", "5", "6", "7", "8", "9", "0"};
+        
+        String[] code = new String[36];
+        ArrayList<String> lines = new ArrayList<String>();
+        File file = new File("morseCode.txt");
+        Scanner sc = new Scanner(file);
+        while (sc.hasNext()) {
+            String str = sc.nextLine();
+            lines.add(str);
+        }
+        sc.close();
+        for (int i = 0; i < code.length; i++){
+            code[i] = lines.get(i);
+        }
+        
+        String result = "";
+        for (int i = 0; i<english.length(); i++){
+            array[i] = english.substring(i,i+1);
+        }
+        
+        for (int i =0; i<english.length(); i++){
+            for (int j = 0; j < letter.length; j++) { 
+                if (array[i].equalsIgnoreCase(letter[j])) { 
+                    result += code[j] + " ";
+                    break;
+                }
+            }
+        }
+        return result;
+    }
+}
