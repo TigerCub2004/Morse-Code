@@ -1,0 +1,33 @@
+ * Tester File that, when run, accepts user input in the form of an english phrase and the converts it into morse code.
+ * This code is available for public use. Please give credit where it is due.
+ *
+ * @Yahvin Gali
+ * @3/18/2021
+ */
+ 
+import java.util.*;
+import java.io.File;
+public class MorseCodetester
+{
+    public static void main(String []args) throws Exception
+    {
+        Scanner in  = new Scanner(System.in);
+        System.out.println("Enter 1 to Use");
+        System.out.println("Enter 2 to Quit");
+        int usage = in.nextInt();
+        while (usage == 1){
+            System.out.println("Enter a prompt in english:");
+            String input = in.next();
+            System.out.println();
+            System.out.println("Morse Code: " + MorseCode.englishConvert(input));
+            System.out.println();
+            System.out.println("Continue? (Y/N)");
+            String cont = in.next();
+            System.out.println();
+            if (cont.equalsIgnoreCase("N")){
+                break;
+            }
+        }
+        System.out.println("Have a nice day.");
+    }
+}
